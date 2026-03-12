@@ -8,6 +8,8 @@ AOS.init({
 function startInvitation() {
     const overlay = document.getElementById('overlay');
     const music = document.getElementById('bgMusic');
+    const music = document.getElementById('bgMusic');
+music.volume = 0.5; // Mengatur volume ke 50% agar tetap nyaman didengar
     
     overlay.style.opacity = '0';
     setTimeout(() => {
