@@ -1,0 +1,48 @@
+:root {
+    --primary: #2c3e50;
+    --gold: #d4af37;
+    --white: #ffffff;
+}
+
+* {
+    margin: 0; padding: 0; box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+/* Overlay styles */
+#overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: var(--primary); color: var(--white);
+    display: flex; align-items: center; justify-content: center;
+    z-index: 1000; transition: 1s;
+}
+
+.hero {
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('assets/hero-bg.jpg');
+    background-size: cover; background-position: center;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--white); text-align: center;
+}
+
+.details { padding: 80px 20px; text-align: center; background: #f9f9f9; }
+
+.info-card {
+    background: white; padding: 30px; border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1); display: inline-block;
+}
+
+.gallery .grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px; padding: 20px;
+}
+
+.gallery img { width: 100%; border-radius: 10px; transition: 0.3s; }
+.gallery img:hover { transform: scale(1.05); }
+
+button {
+    padding: 12px 30px; background: var(--gold); border: none;
+    color: white; border-radius: 25px; cursor: pointer; font-size: 1.1rem;
+}
