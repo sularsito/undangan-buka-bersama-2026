@@ -9,9 +9,12 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-html { scroll-behavior: smooth; }
+/* Mencegah scroll manual agar efek video lebih terasa */
+body {
+    overflow: hidden; 
+}
 
-/* Overlay styles */
+/* Overlay / Halaman Pembuka */
 #overlay {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
     background: var(--primary); color: var(--white);
@@ -19,30 +22,116 @@ html { scroll-behavior: smooth; }
     z-index: 1000; transition: 1s;
 }
 
-.hero {
+/* KONTAINER SLIDESHOW */
+.slideshow-container {
+    width: 100%;
     height: 100vh;
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('assets/hero-bg.jpg');
-    background-size: cover; background-position: center;
-    display: flex; align-items: center; justify-content: center;
-    color: var(--white); text-align: center;
+    position: relative;
 }
 
-.details { padding: 80px 20px; text-align: center; background: #f9f9f9; }
+/* Sembunyikan slide secara default */
+.mySlides {
+    display: none;
+    height: 100vh;
+    width: 100%;
+}
+
+/* Animasi Fade (Efek Transisi Video) */
+.fade {
+    animation-name: fade;
+    animation-duration: 2.5s; /* Kecepatan memudar */
+}
+
+@keyframes fade {
+    from {opacity: .4} 
+    to {opacity: 1}
+}
+
+/* Styling Section di dalam Slide */
+section {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('assets/hero-bg.jpg');
+    background-size: cover; 
+    background-position: center;
+    color: var(--white);
+}
+
+.details { 
+    padding: 20px; 
+    background: #f9f9f9; 
+}
 
 .info-card {
-    background: white; padding: 30px; border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1); display: inline-block;
+    background: white; 
+    padding: 30px; 
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+    display: inline-block;
+    margin-top: 20px;
 }
 
 .gallery .grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 15px; padding: 20px;
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px; 
+    padding: 20px;
+    width: 100%;
+    max-width: 800px;
 }
 
-.gallery img { width: 100%; border-radius: 10px; transition: 0.3s; }
-.gallery img:hover { transform: scale(1.05); }
+.gallery img { 
+    width: 100%; 
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px; 
+}
+
+/* --- NAVIGASI INDIKATOR (DOTS) --- */
+.dot-container {
+    text-align: center;
+    position: fixed;
+    bottom: 30px;
+    width: 100%;
+    z-index: 100;
+}
+
+.dot {
+    height: 12px;
+    width: 12px;
+    margin: 0 5px;
+    background-color: rgba(255, 255, 255, 0.5); /* Warna transparan */
+    border: 1px solid var(--primary);
+    border-radius: 50%;
+    display: inline-block;
+    transition: all 0.6s ease;
+}
+
+/* Warna titik saat slide aktif */
+.active-dot {
+    background-color: var(--gold);
+    width: 30px; /* Membuat titik aktif jadi lonjong agar lebih modern */
+    border-radius: 10px;
+}
 
 button {
-    padding: 12px 30px; background: var(--gold); border: none;
-    color: white; border-radius: 25px; cursor: pointer; font-size: 1.1rem;
+    padding: 12px 30px; 
+    background: var(--gold); 
+    border: none;
+    color: white; 
+    border-radius: 25px; 
+    cursor: pointer; 
+    font-size: 1.1rem;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.1);
 }
